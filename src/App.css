@@ -1,0 +1,37 @@
+.layout {
+  display: flex;
+  justify-content: center;
+}
+
+.resume {
+  width: 815px;
+  height: 1056px;
+  border: 1px black solid;
+  margin: 5px;
+}
+
+.name {
+  display: flex;
+  align-items: start;
+  gap: 2px;
+  margin: 4px;
+}
+
+.eidt-button {
+  border: none;
+  width: 16px;
+  cursor: pointer;
+  appearance: none;
+  padding: 0;
+  background-color: inherit;
+  margin: 4px 0 0;
+}
+
+.name-input {
+  display: inline-block;
+  width: 180px;
+  height: 48px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 48px;
+}
