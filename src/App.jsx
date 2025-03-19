@@ -1,7 +1,8 @@
 import { useState } from "react";
-import "./App.css";
 import editImage from "./images/edit.png";
 import editingImage from "./images/editing.png";
+import githubImage from "./images/github.png";
+import linkedinImage from "./images/linkedin.png";
 
 function App() {
   return (
@@ -12,12 +13,12 @@ function App() {
 }
 
 function Layout({ children }) {
-  return <div className="layout">{children}</div>;
+  return <div className="flex justify-center mt-2">{children}</div>;
 }
 
 function Resume() {
   return (
-    <div className="resume">
+    <div className="border-4 border-solid w-[816px] h-[1054px]">
       <Contact />
     </div>
   );
@@ -26,13 +27,43 @@ function Resume() {
 function Contact() {
   return (
     <div>
-      <Name />
+      <TextInput
+        placeHolder={"Pak Wan"}
+        styles={"text-3xl font-bold ml-1 w-40"}
+      />
+
+      <TextInput
+        placeHolder={"Software Engineer"}
+        styles={"text-lg font-normal ml-1 w-40"}
+      />
+      <div className="flex gap-5 ml-1 mr-1 justify-start">
+        <div className="flex-none">
+          <TextInput
+            placeHolder={"510-xxx-xxxx"}
+            styles={"text-lg font-normal w-28"}
+          />
+        </div>
+        <span className="flex-none">|</span>
+        <div className="flex-none">
+          <TextInput
+            placeHolder={"paklong2556@gmail.com"}
+            styles={"text-lg font-normal w-55"}
+          />
+        </div>
+        <span className="flex-none">|</span>
+        <div className="flex-none">
+          <TextInput
+            placeHolder={"Newark, CA"}
+            styles={"text-lg font-normal w-25"}
+          />
+        </div>
+      </div>
     </div>
   );
 }
 
-function Name() {
-  const [name, setName] = useState("Your Name");
+function TextInput({ placeHolder, styles }) {
+  const [text, setText] = useState(placeHolder);
   const [eidtMode, setEditMode] = useState(false);
 
   const handleClick = () => {
@@ -40,10 +71,7 @@ function Name() {
   };
 
   const handleChange = (e) => {
-    setName(e.target.value);
-    const WIDTHBUFFER = 10;
-    e.target.style.width = "180px";
-    e.target.style.width = `${e.target.scrollWidth + WIDTHBUFFER}px`;
+    setText(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -52,20 +80,20 @@ function Name() {
   };
 
   return (
-    <div className="name">
+    <div className="flex gap-1 flex-auto">
       {eidtMode ? (
         <form onSubmit={handleSubmit}>
           <input
-            className="name-input"
+            className={styles}
             onChange={handleChange}
             spellcheck="false"
             autoFocus
           />
         </form>
       ) : (
-        <h1>{name}</h1>
+        <p className={styles}>{text}</p>
       )}
-      <button className="eidt-button" onClick={handleClick}>
+      <button className="w-4 h-4" onClick={handleClick}>
         <img src={eidtMode ? editingImage : editImage} />
       </button>
     </div>
